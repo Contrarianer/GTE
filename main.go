@@ -36,13 +36,13 @@ func init() {
 	})
 
 	http.HandleFunc("/test", func(writer http.ResponseWriter, request *http.Request) {
-		jsFilePath := `public/test.js`
+		jsFilePath := `web/test.js`
 		rt, _ := JsParser(jsFilePath, "a", 1, 2)
 		fmt.Fprintln(writer, rt)
 	})
 
 	http.HandleFunc("/bs", func(writer http.ResponseWriter, request *http.Request) {
-		jsFilePath := `public/example.js`
+		jsFilePath := `web/example.js`
 		timeStamp := time.Now().UnixNano()
 		result := fmt.Sprintf("%v", timeStamp)
 		fmt.Println(result)
