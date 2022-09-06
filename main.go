@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/robertkrimen/otto"
@@ -42,11 +43,9 @@ func init() {
 
 	http.HandleFunc("/bs", func(writer http.ResponseWriter, request *http.Request) {
 		jsFilePath := `web/example.js`
-		timeStamp := time.Now().UnixNano()
-		result := fmt.Sprintf("%v", timeStamp)
-		fmt.Println(result)
+		result := strconv.FormatInt(time.Now().Unix(), 10)
 		if rt, err := JsParser(jsFilePath, "encodeInp", result); err != nil {
-			fmt.Printf(`Error Js Parse call encodeInp`)
+			fmt.Println(`Error Js Parse call encodeInp`)
 		} else {
 			fmt.Fprintln(writer, rt)
 		}
