@@ -13,7 +13,6 @@ import (
 func JsParser(filePath string, functionName string, args ...interface{}) (result string, err error) {
 	bytes, err := ioutil.ReadFile(filePath)
 	if err != nil {
-		fmt.Printf("error, when readfile: %v\n", err)
 		return "", err
 	}
 
