@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"net/http"
+	"os"
 	"strconv"
 	"time"
 
@@ -12,7 +12,7 @@ import (
 
 // JsParser is a load js parse function, you can use it to call js get result
 func JsParser(filePath string, functionName string, args ...interface{}) (result string, err error) {
-	bytes, err := ioutil.ReadFile(filePath)
+	bytes, err := os.ReadFile(filePath)
 	if err != nil {
 		return "", err
 	}
