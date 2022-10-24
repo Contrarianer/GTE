@@ -6,5 +6,4 @@ Call js in go
 
 golang implements calling js based on otto
 
-- otto: github.com/robertkrimen/otto
-
+- [otto](https://github.com/robertkrimen/otto): github.com/robertkrimen/otto

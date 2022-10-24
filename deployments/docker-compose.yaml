@@ -1,0 +1,9 @@
+version: "3"
+services:
+  gte:
+    image: gte:latest
+    container_name: gte_service
+    expose:
+      - 9090
+    ports:
+      - "1280:9090"

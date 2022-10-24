@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gte
+  namespace: gte
+  labels:
+    app: gte
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: gte
+      labels:
+        app: gte
+    spec:
+      containers:
+        - name: gte
+          image: gte:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9090
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "0.5"
+            limits:
+              memory: "2Gi"
+              cpu: "1"
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: gte
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gte
+  namespace: gte
+spec:
+  selector:
+    app: gte
+  ports:
+    - port: 8080
+  type: NodePort
