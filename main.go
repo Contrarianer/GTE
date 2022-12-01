@@ -35,12 +35,6 @@ func init() {
 		fmt.Fprintf(writer, "Hello World")
 	})
 
-	http.HandleFunc("/test", func(writer http.ResponseWriter, request *http.Request) {
-		jsFilePath := `web/test.js`
-		rt, _ := JsParser(jsFilePath, "a", 1, 2)
-		fmt.Fprintln(writer, rt)
-	})
-
 	http.HandleFunc("/bs", func(writer http.ResponseWriter, request *http.Request) {
 		jsFilePath := `web/example.js`
 		result := strconv.FormatInt(time.Now().Unix(), 10)
